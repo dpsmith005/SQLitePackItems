@@ -1,5 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using Microsoft.VisualBasic.ApplicationServices;
+using SQLitePackItems.Forms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,6 +44,7 @@ namespace SQLitePackItems
         const Double gramsPerOunce = 28.3495;
         const Double ouncesPerGram = 0.035274;
         bool dgvItemEditChanged = false;
+        public string sqlQuery;
         public MainForm()
         {
             InitializeComponent();
@@ -761,20 +763,17 @@ namespace SQLitePackItems
                 listGroups.Add(lbGroups.GetItemText(item));
             }
 
-            var cmd = new SqlCommand();
-            var sql = "";
             if (listGroups.Count >= 1)
             {
                 string result = string.Join(",", listGroups.Select(x => $"'{x}'"));
-                sql = $"SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE PackItems.GroupName IN ({result}) ORDER BY gr.ListOrder";
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE PackItems.GroupName IN ({result}) ORDER BY gr.ListOrder";
             }
             else
             {
-                sql = "SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName  ORDER BY gr.ListOrder";
-                cmd.CommandText = sql;
+                sqlQuery = "SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName  ORDER BY gr.ListOrder";
             }
-            updateStatus("Selected SQL statement is: " + sql);
-            updateReportdgv(sql);
+            updateStatus("Selected SQL statement is: " + sqlQuery);
+            updateReportdgv(sqlQuery);
         }
 
         private void btnReportSelected_Click(object sender, EventArgs e)
@@ -783,10 +782,20 @@ namespace SQLitePackItems
             bool isSelected = cbSelected.Checked;
             bool isNew = cbNew.Checked;
 
-            var cmd = new SqlCommand();
-            var sql = $"SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Selected = {isSelected} or NEW = {isNew} ORDER BY gr.ListOrder";
-            updateStatus("Selected SQL statement is: " + sql);
-            updateReportdgv(sql);
+            if (isNew)
+            {
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE New = {isNew} ORDER BY gr.ListOrder";
+            } 
+            else if (isSelected)
+            {
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Selected = {isSelected} ORDER BY gr.ListOrder";
+            }
+            else
+            {
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName ORDER BY gr.ListOrder";
+            }
+            updateStatus("Selected SQL statement is: " + sqlQuery);
+            updateReportdgv(sqlQuery);
         }
 
         private void btnReportTags_Click(object sender, EventArgs e)
@@ -799,28 +808,27 @@ namespace SQLitePackItems
                 listTags.Add(lbTags.GetItemText(item));
             }
 
-            var cmd = new SqlCommand();
-            var sql = "";
             if (listTags.Count == 0)
             {
-                sql = "SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName ORDER BY gr.ListOrder";
-                cmd.CommandText = sql;
+                sqlQuery = "SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName ORDER BY gr.ListOrder";
             }
             else if (listTags.Count == 1)
             {
-                sql = $"SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Tags like '%{listTags[0]}%' ORDER BY gr.ListOrder";
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Tags like '%{listTags[0]}%' ORDER BY gr.ListOrder";
             }
             else  // >1 multiple tags to find
             {
-                sql = $"SELECT PackItems.* FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Tags like '%{listTags[0]}%' ORDER BY gr.ListOrder";
+                //string result = string.Join(",", listTags.Select(x => $"'{x}'"));
+                sqlQuery = $"SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName WHERE Tags like '%{listTags[0]}%'";
                 for (int i = 1; i < listTags.Count; i++)
                 {
-                    sql = sql + $" OR Tags like '%{listTags[i]}%'";
+                    sqlQuery = sqlQuery + $" OR Tags like '%{listTags[i]}%'";
                 }
+                sqlQuery = sqlQuery + " ORDER BY gr.ListOrder";
             }
 
-            updateStatus("Selected SQL statement is: " + sql);
-            updateReportdgv(sql);
+            updateStatus("Selected SQL statement is: " + sqlQuery);
+            updateReportdgv(sqlQuery);
         }
 
         private void updateReportdgv(string query)
@@ -832,16 +840,17 @@ namespace SQLitePackItems
         }
         private void btnReportDisplay_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM PackItems";
+            string query = "SELECT PackItems.*, gr.ListOrder FROM PackItems INNER JOIN Groups as gr on gr.GroupName = PackItems.GroupName ORDER BY gr.ListOrder";
             BindingSource _packItemsLOBindingSource = new BindingSource();
             _packItemsLOBindingSource.DataSource = _packItemsManager.PackItemsLOQuery(query);
             //_packItemsLOBindingSource.Sort = "ListOrder";
             //ReportDataSource rds = new ReportDataSource("DataSet1", _packItemsLOBindingSource);
 
-            ReportViewer rv = new ReportViewer();
             //rv.DataBindings.Clear();
             //rv.DataBindings.Add(_packItemsLOBindingSource);
             //rv.Refresh();
+
+            PackItemsReport rv = new PackItemsReport(sqlQuery);
             rv.Show();
 
         }
