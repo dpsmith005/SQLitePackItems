@@ -82,36 +82,36 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.95833in</Width>
+                  <Width>1.74999in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.57291in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.55208in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.44791in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.52083in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.58333in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.5625in</Width>
+                  <Width>0.5in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.45833in</Width>
+                  <Width>1.07292in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.39583in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.59375in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.51042in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.3125in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.01042in</Width>
+                  <Width>2.29167in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.23333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -386,7 +386,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.23333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -669,7 +669,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.23333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -693,6 +693,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -723,6 +724,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -753,6 +755,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -783,6 +786,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -813,6 +817,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -845,6 +850,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -877,6 +883,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -966,7 +973,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.45833in</Size>
+                    <Size>1.20835in</Size>
                     <CellContents>
                       <Textbox Name="Textbox42">
                         <CanGrow>true</CanGrow>
@@ -1014,7 +1021,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.45833in</Size>
+                    <Size>1.20835in</Size>
                     <CellContents>
                       <Textbox Name="GroupName1">
                         <CanGrow>true</CanGrow>
@@ -1069,9 +1076,8 @@
             </TablixRowHierarchy>
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.60069in</Top>
-            <Height>0.75in</Height>
-            <Width>10.84375in</Width>
+            <Height>0.7in</Height>
+            <Width>9.5in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1079,13 +1085,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>8.5in</Height>
+        <Height>8in</Height>
         <Style />
       </Body>
       <Width>11in</Width>
       <Page>
         <PageHeader>
-          <Height>0.84375in</Height>
+          <Height>0.75in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1107,7 +1113,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox63</rd:DefaultName>
-              <Top>0.29167in</Top>
+              <Top>0.125in</Top>
               <Left>3.28125in</Left>
               <Height>0.32292in</Height>
               <Width>2.59375in</Width>
@@ -1129,7 +1135,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1in</Height>
+          <Height>0.8in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1148,7 +1154,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox65</rd:DefaultName>
-              <Top>0.35292in</Top>
+              <Top>0.17584in</Top>
               <Left>4.41667in</Left>
               <Height>0.25in</Height>
               <Width>2.41667in</Width>
@@ -1169,10 +1175,12 @@
             </Border>
           </Style>
         </PageFooter>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>7.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0.7in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -1210,6 +1218,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>7b3f6c60-3b04-4987-bd63-a4ed8e2d660e</rd:ReportID>
 </Report>
