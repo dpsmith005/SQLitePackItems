@@ -61,7 +61,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rtbHelpInfo);
             this.Name = "HelpInfo";
-            this.Text = "HelpInfo";
+            this.Text = "Help Info";
             this.ResumeLayout(false);
 
         }
